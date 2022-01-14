@@ -1,0 +1,52 @@
+.container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(241, 241, 241);
+
+    .card {
+        padding: 4rem;
+        width: 16rem;
+
+       #title{
+           font-size: 18px;
+           color: #2e2e2e;
+        }
+
+        .loginForm{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            input{
+                color: yellow !important;
+            }
+
+            ::ng-deep.mat-form-field-label{
+                color: #2e2e2e !important;
+            }
+            
+            ::ng-deep.mat-form-field-underline{
+                background-color: #f59e0b !important;
+            }
+            
+            
+            ::ng-deep.mat-form-field-ripple{
+                background-color: #f59e0b !important;
+            }
+
+            #errorText{
+                color: red;
+            }
+
+            #submitButton{
+                background: rgb(56, 56, 56)
+            }
+        }
+    }
+
+   
+}
