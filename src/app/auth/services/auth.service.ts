@@ -19,4 +19,7 @@ export class AuthService {
       return this.http.post<Auth>(this.baseUrl, user);
   }
 
+  isLoggedIn():Boolean{
+    return !!localStorage.getItem('x-token');
+  }
 }

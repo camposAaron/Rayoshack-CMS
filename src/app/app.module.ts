@@ -7,6 +7,8 @@ import { AuthModule } from './auth/auth.module';
 import { MaterialModule } from './shared/material/material.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptorService } from './shared/services/error-interceptor.service';
+import { TokenInterceptorService } from './auth/services/token-interceptor.service';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,14 @@ import { ErrorInterceptorService } from './shared/services/error-interceptor.ser
       provide : HTTP_INTERCEPTORS,
       useClass : ErrorInterceptorService,
       multi : true
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi : true
+    },
+    AuthGuard
+
   ],
   bootstrap: [AppComponent]
 })

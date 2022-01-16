@@ -7,6 +7,7 @@ import { MaterialModule } from '../shared/material/material.module';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -14,11 +15,6 @@ import { LoginComponent } from './components/login/login.component';
     LoginComponent
   ],
   providers : [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi : true
-    }
   ],
   imports: [
     CommonModule,
