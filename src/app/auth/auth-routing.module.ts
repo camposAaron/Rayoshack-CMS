@@ -5,7 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {
-    path: 'auth',
+    path: '',
     children: [
       { path: 'login', component: LoginComponent },
       { path: '**', redirectTo: 'login' }

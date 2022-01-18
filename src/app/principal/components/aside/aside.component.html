@@ -1,0 +1,32 @@
+<mat-sidenav id="aside" #sidenav mode="side" opened>
+    <mat-nav-list id="navlist">
+            <a  name class="nav-item" mat-list-item routerLink="."> 
+                <span>Productos</span>
+            </a>
+
+            <a class="nav-item" mat-list-item routerLink="."> 
+                <span>Ventas</span>
+              
+            </a>
+
+            <a [routerLink]="[ '/promociones']" class="nav-item" mat-list-item routerLink="."> 
+                <span>Promociones</span>
+            </a>
+
+            <a class="nav-item" mat-list-item routerLink="."> 
+                <span>Categorias</span>
+            </a>
+
+            <a class="nav-item" mat-list-item routerLink="."> 
+                <span>Usuarios</span>
+            </a>
+
+            <a class="nav-item" mat-list-item routerLink="."> 
+                <span>Inventario</span>
+            </a>
+
+            <a class="nav-item" mat-list-item routerLink="."> 
+                <span>Mensajes</span>
+            </a>
+    </mat-nav-list>
+</mat-sidenav>

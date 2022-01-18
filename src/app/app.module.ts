@@ -10,6 +10,8 @@ import { ErrorInterceptorService } from './shared/services/error-interceptor.ser
 import { TokenInterceptorService } from './auth/services/token-interceptor.service';
 import { AuthGuard } from './auth/auth.guard';
 
+import { PrincipalModule } from './principal/principal.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -19,6 +21,7 @@ import { AuthGuard } from './auth/auth.guard';
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthModule,
+    PrincipalModule,
     MaterialModule
   ],
   providers: [
