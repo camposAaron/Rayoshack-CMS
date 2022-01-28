@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { Auth, Login } from '../models/usuario';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class AuthService {
   private baseUrl = environment.baseUrl + '/auth/login'
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router:Router
   ) { }
 
   signIn(user: Login):Observable<Auth>{
@@ -21,5 +23,10 @@ export class AuthService {
 
   isLoggedIn():Boolean{
     return !!localStorage.getItem('x-token');
+  }
+
+  logeout(){
+    localStorage.removeItem('x-token');
+    this.router.navigate(['/auth']);
   }
 }
