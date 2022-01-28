@@ -1,15 +1,27 @@
 <mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button mat-icon-button class="MenuIcon">
         <mat-icon>menu</mat-icon>
     </button>
-    <span>
-        <img id="logo" [src]="logo">
-    </span>
+    <span id="title"> dashboard </span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-    </button>
+
+    <div id="user-container">
+    
+        <div id="userLetter">
+            JC
+            <span></span>
+        </div>
+    
+    
+        <div id="user-data">
+            <span id="name">Josue Campos</span>
+            <span id="email">campos.aaron.15@gmail.com</span>
+        </div>
+
+        <button mat-button id="logout">
+            <mat-icon>logout</mat-icon>
+        </button>
+   
+    </div> 
+
 </mat-toolbar>
