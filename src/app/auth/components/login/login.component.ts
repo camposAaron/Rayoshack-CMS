@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
 import { Login } from '../../models/usuario';
 import { AuthService } from '../../services/auth.service';
 
@@ -23,12 +24,20 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.authService.isLoggedIn()){
+      this.router.navigate(['./admin']);
+    }
   }
 
   signIn() {
     this.authService.signIn(this.user).subscribe(
       resp => {
-        console.log(resp);
+  
+        if(resp.usuario.rol !== 'ADMIN_ROLE'){
+          this.errorMessage = 'No eres administrador';
+          throw new Error('Usuario con rol administrador');
+        }
+        
         localStorage.setItem('x-token', resp.token);
         this.router.navigate(['/admin']);
       },

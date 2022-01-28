@@ -1,35 +1,135 @@
-.example-container{
+::ng-deep .mat-drawer-inner-container {
+    overflow: hidden !important;
+}
+
+::ng-deep .mat-list-item-content {
+    width: 100%;
+    justify-content: center;
+    padding: 0px;
+}
+
+/*unselectable mode*/
+@mixin unselectable{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.example-container {
     max-width: 100%;
     height: 100%;
 
-    #aside{
-        width: 20%;
-        background-color: #f5f5f5;
+    #aside {
+        display: flex;
+        flex-direction: column;
+        width: 16%;
+        background: #fafafa;
+        padding-top: 10px;
+        padding-inline: 28px;
 
-        #navlist{
+        #logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100px;
+            justify-self: center;
+        }
+
+        #menu-title {
+            display: flex;
+            flex-direction: row;
+            margin-top: 5px;
+
+            #rectagule {
+                width: 2px;
+                height: 18px;
+                background: rgba(0, 0, 0, 0.61);
+            }
+
+            span {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 12px;
+                /* identical to box height, or 267% */
+                letter-spacing: 2px;
+                text-transform: uppercase;
+
+                margin-left: 5px;
+
+                color: #000000;
+            }
+        }
+
+        #navlist {
             width: 100%;
             display: flex;
             flex-direction: column;
             min-height: 80%;
-            align-items: center;
+            @include unselectable();
 
-            .nav-item{
-                width: 14rem;
-                background-color: rgb(83, 83, 83);
-                color: white;
-                border-radius: 5px;
-                margin-top: 15px;
-            
+            .nav-item {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 20px;
+                align-items: center;
+                width: 100%;
+                height: 45px;
+                background: #323232;
+                border-radius: 4px;
+
+                span {
+                    text-transform: uppercase;
+                    font-family: Roboto;
+                    font-weight: 500;
+                    font-size: 12px;
+                    letter-spacing: 1.25px;
+                    color: #ffff;
+                }
+
+                svg {
+                    margin-left: 10px;
+                    path {
+                        fill: #ffff;
+                    }
+                }
             }
         }
-
     }
-
 }
 
-router-outlet{
+//Selected Nav button
+.activo {
+    background: linear-gradient(
+        98.83deg,
+        #facc15 40.49%,
+        rgba(239, 254, 61, 0.891719) 54.14%,
+        #ffdb1d 62.69%
+    ) !important;
+    border: 1px solid rgba(0, 0, 0, 0.53) !important;
+    box-sizing: border-box !important;
+
+    /* default */
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12) !important;
+    border-radius: 4px;
+
+    transition: all 200ms;
+    span {
+        font-family: Roboto;
+        color: #424242 !important;
+        font-weight: 500;
+    }
+
+    svg path {
+        fill: #424242 !important;
+    }
+}
+
+router-outlet {
     display: block;
     width: 100%;
     height: 100%;
-    
 }
