@@ -1,6 +1,6 @@
 <mat-sidenav-container class="example-container">
 
-    <mat-sidenav id="aside" mode="side" opened>
+<mat-sidenav id="aside" mode="side" [opened]="flat">
         <div id="logo">
             <img src="../../assets/logo.svg" alt="logo">
         </div>
@@ -82,7 +82,7 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <app-header></app-header>
+        <app-header (toggleFlat)="toggleNavbar($event)"></app-header>
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 

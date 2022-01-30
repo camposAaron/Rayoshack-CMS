@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.scss']
 })
-export class PrincipalComponent implements OnInit {
+export class PrincipalComponent {
 
-  constructor() { }
+  public flat: boolean = true;
 
-  ngOnInit(): void {
+  toggleNavbar(flat:boolean){
+    this.flat = flat;
   }
-
+  
 }

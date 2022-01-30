@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
@@ -6,17 +6,28 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   templateUrl : './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent{
+
+  @Output() toggleFlat =  new EventEmitter<boolean>()
 
   public logo: string = "../../../../assets/LOGO.svg";
+  public flat: boolean = true;
 
   constructor(private authService: AuthService) { }
-
-  ngOnInit(): void {
-
-  }
-
+   
   logout(){
     this.authService.logeout();
   }
+
+  toggleNav(){
+
+    if(this.flat){
+        this.toggleFlat.emit(true)
+        this.flat = false;
+    }else{
+      this.toggleFlat.emit(false);
+      this.flat = true;           
+    }    
+  }
+
 }

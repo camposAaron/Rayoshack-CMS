@@ -1,5 +1,5 @@
 <mat-toolbar>
-    <button mat-icon-button class="MenuIcon">
+    <button mat-icon-button class="MenuIcon" (click)="toggleNav()">
         <mat-icon>menu</mat-icon>
     </button>
     <span id="title"> dashboard </span>
@@ -18,7 +18,7 @@
             <span id="email">campos.aaron.15@gmail.com</span>
         </div>
 
-        <button mat-button id="logout" (click)="logout()">
+        <button mat-button matTooltip="Cerrar sesion" id="logout" (click)="logout()">
             <mat-icon>logout</mat-icon>
         </button>
    
