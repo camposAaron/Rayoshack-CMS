@@ -7,7 +7,7 @@ import { PrincipalComponent } from './principal.component';
 const routes: Routes = [
     {
       path : '', component : PrincipalComponent,
-      children : [
+      children : [ //TODO: lazy load.
         {  path: 'productos',  component : ListaComponent },
         {  path: 'promociones', component : PromocionesComponent },
         {  path: '', redirectTo: '/admin/productos', pathMatch: 'full'}
