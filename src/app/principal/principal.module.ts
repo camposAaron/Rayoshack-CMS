@@ -7,6 +7,7 @@ import { MaterialModule } from '../shared/material/material.module';
 import { PrincipalComponent } from './principal.component';
 import { PromocionesComponent } from './pages/promociones/promociones.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ProductosModule } from './pages/productos/productos.module';
 
 @NgModule({
   declarations: [

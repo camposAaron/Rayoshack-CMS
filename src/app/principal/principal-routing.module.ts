@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListaComponent } from './pages/productos/lista/lista.component';
+import { DetalleComponent } from './pages/productos/detalle/detalle.component';
 import { PromocionesComponent } from './pages/promociones/promociones.component';
 import { PrincipalComponent } from './principal.component';
 
@@ -8,7 +8,9 @@ const routes: Routes = [
     {
       path : '', component : PrincipalComponent,
       children : [ //TODO: lazy load.
-        {  path: 'productos',  component : ListaComponent },
+        {  path: 'productos',  
+           loadChildren : () => import('./pages/productos/productos.module').then(m => m.ProductosModule)
+        },
         {  path: 'promociones', component : PromocionesComponent },
         {  path: '', redirectTo: '/admin/productos', pathMatch: 'full'}
       ]
