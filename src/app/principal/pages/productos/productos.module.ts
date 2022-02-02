@@ -6,13 +6,15 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
 import { ListaComponent } from './lista/lista.component';
 import { DetalleComponent } from './detalle/detalle.component';
 import { FinderComponent } from './lista/finder/finder.component';
+import { TableComponent } from './lista/table/table.component';
 
 
 @NgModule({
   declarations: [
       ListaComponent,
       DetalleComponent,
-      FinderComponent
+      FinderComponent,
+      TableComponent
   ],
   imports: [
     CommonModule,
