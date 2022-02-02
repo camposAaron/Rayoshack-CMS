@@ -1,0 +1,63 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- PORTADA -->
+    <ng-container matColumnDef="portada">
+      <th mat-header-cell *matHeaderCellDef> Portada </th>
+      <td mat-cell *matCellDef="let row">
+          <img src="{{row.portada | img:row.nombre}}" alt="img" width="40" height="40">  
+      </td>
+    </ng-container>
+
+    <!-- Marca -->
+    <ng-container matColumnDef="marca">
+      <th mat-header-cell *matHeaderCellDef> Marca </th>
+      <td mat-cell *matCellDef="let row"> {{row.marca}} </td>
+    </ng-container>
+    
+    <!-- Modelo -->
+    <ng-container matColumnDef="modelo">
+      <th mat-header-cell *matHeaderCellDef> Modelo </th>
+      <td mat-cell *matCellDef="let row"> {{row.modelo}} </td>
+    </ng-container>
+
+    <!-- Categoria -->
+    <ng-container matColumnDef="categoria">
+      <th mat-header-cell *matHeaderCellDef> Categoria </th>
+      <td mat-cell *matCellDef="let row"> {{row.categoria.nombre}} </td>
+    </ng-container>
+
+    <!-- precio -->
+    <ng-container matColumnDef="precio">
+      <th mat-header-cell *matHeaderCellDef> Precio </th>
+      <td mat-cell *matCellDef="let row"> {{row.precio}} U$D </td>
+    </ng-container>
+
+    <!--Calificacion-->
+    <ng-container matColumnDef="calificacion">
+      <th mat-header-cell *matHeaderCellDef> Calificacion </th>
+      <td mat-cell *matCellDef="let row"> {{row.calificacion}} </td>
+    </ng-container>
+    
+    <!--Stock-->
+    <ng-container matColumnDef="stock">
+      <th mat-header-cell *matHeaderCellDef> Stock </th>
+      <td mat-cell *matCellDef="let row"> {{row.stock}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef=" ">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef="let row"> 
+        <button mat-button class="btn-detail">Ver detalles</button>  
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons 
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>

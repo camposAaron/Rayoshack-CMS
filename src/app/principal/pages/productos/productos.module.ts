@@ -7,6 +7,7 @@ import { ListaComponent } from './lista/lista.component';
 import { DetalleComponent } from './detalle/detalle.component';
 import { FinderComponent } from './lista/finder/finder.component';
 import { TableComponent } from './lista/table/table.component';
+import { ImgPipe } from './pipes/img.pipe';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { TableComponent } from './lista/table/table.component';
       ListaComponent,
       DetalleComponent,
       FinderComponent,
-      TableComponent
+      TableComponent,
+      ImgPipe
   ],
   imports: [
     CommonModule,
