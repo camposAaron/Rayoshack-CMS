@@ -1,0 +1,84 @@
+.finder-container {
+    display: flex;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 90px;
+    height: auto;
+    justify-content: space-around;
+    align-items: center;
+    padding-inline: 25px;
+    padding-top: 12px;
+
+    background: #ffffff;
+    /* elevation/1 */
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    #findInput {
+        width: 33%;
+    }
+
+    #filter-container {
+        display: flex;
+        width: 45%;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items: baseline;
+
+        #filter-title {
+            display: flex;
+            align-items: center;
+        }
+        span {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 32px;
+            margin-right: 10px;
+
+            /* identical to box height, or 178% */
+            letter-spacing: 0.25px;
+
+            /* black/0.87 */
+            color: rgba(0, 0, 0, 0.87);
+        }
+
+        .select {
+            width: 33%;
+        }
+    }
+
+    #btnContainer {
+        button {
+            background: #323232;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+        }
+        padding-bottom: 1.34375em;
+    }
+}
+
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 4px 4px 0 0;
+    padding: .75em .75em 0 .75em;
+    background: #fff;
+  }
+
+::ng-deep mat-label{
+      font-size: 16px;
+      color: #323232;
+  }
+
+  ::ng-deep.mat-form-field-ripple{
+    background-color: #f59e0b !important;
+}
+
+#findInput ::ng-deep.mat-form-field-label-ripple{
+    color: #f59e0b !important;
+}
+
+#findInput ::ng-deep .mat-input-element {
+    caret-color: black;
+  }

@@ -1,0 +1,48 @@
+<div class="finder-container">
+ 
+  <mat-form-field id="findInput">
+    <mat-label>Buscar Producto</mat-label>
+    <input matInput placeholder="Ex. Sony" #input>
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <div id="filter-container">
+
+    <div id="filter-title">
+      <span>Filtrar</span>
+      <mat-icon matSuffix>filter_list</mat-icon>
+    </div>
+
+    <mat-form-field appearance="fill" class="select">
+      <mat-label>Categoria</mat-label>
+      <mat-select>
+        <mat-option>None</mat-option>
+        <!-- <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option> -->
+      </mat-select>
+    </mat-form-field>
+
+    
+    <mat-form-field appearance="fill" class="select">
+      <mat-label>Marca</mat-label>
+      <mat-select>
+        <mat-option>None</mat-option>
+        <!-- <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option> -->
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <div id="btnContainer">
+    <button mat-fab  aria-label="agregar producto" matTooltip="Agregar producto">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 2.75H18.5C19.7409 2.75 20.75 3.75912 20.75 5V18.5C20.75 19.7409 19.7409 20.75 18.5 20.75H5C3.75912 20.75 2.75 19.7409 2.75 18.5V5C2.75 3.75912 3.75912 2.75 5 2.75ZM18.5 18.5V5H5L4.99775 18.5H18.5Z" fill="#FAFAFA"/>
+        <path d="M23 9.5H25.25V23C25.25 24.2409 24.2409 25.25 23 25.25H9.5V23H23V9.5ZM10.625 7.25H12.875V10.625H16.25V12.875H12.875V16.25H10.625V12.875H7.25V10.625H10.625V7.25Z" fill="#FAFAFA"/>
+        </svg> 
+    </button>
+  </div>
+
+
+
+</div>
+
+<!-- (keyup)="applyFilter($event)" -->
