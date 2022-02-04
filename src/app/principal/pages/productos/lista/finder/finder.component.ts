@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'finder',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./finder.component.scss']
 })
 export class FinderComponent implements OnInit {
+  
+  @Output() toFind = new EventEmitter<string>();
 
+  public value = "";
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  changeValue(value: string){
+    this.toFind.emit(value);
   }
 
 }

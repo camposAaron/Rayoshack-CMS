@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaComponent implements OnInit {
 
+  toFindValue: string = ""
   constructor() { }
 
   ngOnInit(): void {
-    
+  }
+
+  changeValue(value: string){
+    this.toFindValue = value;
   }
 
 }

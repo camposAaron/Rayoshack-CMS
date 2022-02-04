@@ -8,6 +8,8 @@ import { DetalleComponent } from './detalle/detalle.component';
 import { FinderComponent } from './lista/finder/finder.component';
 import { TableComponent } from './lista/table/table.component';
 import { ImgPipe } from './pipes/img.pipe';
+import { HabiltadoPipe } from './pipes/habiltado.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,12 +18,14 @@ import { ImgPipe } from './pipes/img.pipe';
       DetalleComponent,
       FinderComponent,
       TableComponent,
-      ImgPipe
+      ImgPipe,
+      HabiltadoPipe
   ],
   imports: [
     CommonModule,
     ProductosRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ]
 })
 export class ProductosModule { }

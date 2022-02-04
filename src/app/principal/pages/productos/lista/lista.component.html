@@ -1,4 +1,4 @@
 <div id="container">
-    <finder></finder>
-    <product-table></product-table>
+    <finder (toFind)="changeValue($event)"></finder>
+    <product-table [toFindValue] = "toFindValue" ></product-table>
 </div>

@@ -22,7 +22,7 @@
     </ng-container>
 
     <!-- Categoria -->
-    <ng-container matColumnDef="categoria">
+    <ng-container matColumnDef="categoria.nombre">
       <th mat-header-cell *matHeaderCellDef> Categoria </th>
       <td mat-cell *matCellDef="let row"> {{row.categoria.nombre}} </td>
     </ng-container>
@@ -32,17 +32,11 @@
       <th mat-header-cell *matHeaderCellDef> Precio </th>
       <td mat-cell *matCellDef="let row"> {{row.precio}} U$D </td>
     </ng-container>
-
-    <!--Calificacion-->
-    <ng-container matColumnDef="calificacion">
-      <th mat-header-cell *matHeaderCellDef> Calificacion </th>
-      <td mat-cell *matCellDef="let row"> {{row.calificacion}} </td>
-    </ng-container>
     
     <!--Stock-->
     <ng-container matColumnDef="stock">
       <th mat-header-cell *matHeaderCellDef> Stock </th>
-      <td mat-cell *matCellDef="let row"> {{row.stock}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.stock | habilitado}} </td>
     </ng-container>
 
     <ng-container matColumnDef=" ">
@@ -60,4 +54,6 @@
                  showFirstLastButtons 
                  aria-label="Select page of periodic elements">
   </mat-paginator>
+ 
 </div>
+

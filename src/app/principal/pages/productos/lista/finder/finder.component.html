@@ -2,7 +2,7 @@
  
   <mat-form-field id="findInput">
     <mat-label>Buscar Producto</mat-label>
-    <input matInput placeholder="Ex. Sony" #input>
+    <input matInput placeholder="Ex. Sony" [ngModel]="value" (ngModelChange)="changeValue($event)"  #input>
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
 
@@ -31,6 +31,10 @@
     </mat-form-field>
 
   </div>
+
+  <mat-checkbox color="primary" >
+    <mat-label>Stock</mat-label>
+  </mat-checkbox>
 
   <div id="btnContainer">
     <button mat-fab  aria-label="agregar producto" matTooltip="Agregar producto">
