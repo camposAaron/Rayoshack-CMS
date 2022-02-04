@@ -15,18 +15,18 @@
 
     <mat-form-field appearance="fill" class="select">
       <mat-label>Categoria</mat-label>
-      <mat-select>
-        <mat-option>None</mat-option>
-        <!-- <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option> -->
+      <mat-select (onChange)="changeCategory(value)">
+        <mat-option>todas</mat-option>
+        <mat-option *ngFor="let category of categories" [value]="category._id">{{category.nombre}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     
     <mat-form-field appearance="fill" class="select">
       <mat-label>Marca</mat-label>
-      <mat-select>
-        <mat-option>None</mat-option>
-        <!-- <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option> -->
+      <mat-select [(value)]="marcaSelectedValue">
+        <mat-option>todas</mat-option>
+        <mat-option *ngFor="let marca of marcas" [value]="marca">{{marca}}</mat-option>
       </mat-select>
     </mat-form-field>
 

@@ -1,5 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { Categoria } from 'src/app/models';
+import { ProductosServicesService } from '../../services/productos-services.service';
 
 
 @Component({
@@ -12,9 +14,51 @@ export class FinderComponent implements OnInit {
   @Output() toFind = new EventEmitter<string>();
 
   public value = "";
-  constructor() { }
+  public categories!: Categoria[];
+  public marcas: string[];
+  @Output() categorySelectedValue = new EventEmitter<string>();
+  @Output() marcaSelectedValue = new EventEmitter<string>();
+
+  constructor(private _productService : ProductosServicesService) { 
+    this.marcas = [];
+  }
 
   ngOnInit(): void {
+    this.getCategories();
+    this.getBranches();
+  }
+
+  filterCategory(){
+    console.log('aqui');
+  }
+  
+  getCategories(){
+    this._productService.getCategories().subscribe(
+      categories => {
+        this.categories = categories;
+      }
+    )
+  }
+
+  changeCategory(category: string){
+    console.log(category);
+    this.categorySelectedValue.emit(category);
+  }
+
+  getBranches(){
+    this._productService.getProducts().subscribe(
+      products => {
+        
+        products.forEach(product => {
+          this.marcas.push(product.marca) 
+        });
+
+        this.marcas = this.marcas.filter((item, index)=>{
+          return this.marcas.indexOf(item) === index;
+        });
+
+      }
+    )
   }
 
   changeValue(value: string){

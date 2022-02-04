@@ -1,3 +1,4 @@
 export interface Categoria {
-    nombre:string
+    _id : string;
+    nombre:string;
 }

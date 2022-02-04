@@ -27,7 +27,9 @@ export class ProductosServicesService {
   }
 
   getCategories(): Observable<Categoria[]> {
-    return this.http.get<Categoria[]>(this.baseUrl+'/categoria');
+    return this.http.get<Categoria[]>(this.baseUrl+'/categoria').pipe(
+      map((res:any) => res.categorias)
+    )
   }
 
 }
