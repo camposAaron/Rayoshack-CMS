@@ -14,7 +14,7 @@ interface productRequest{
 })
 export class ProductosServicesService {
 
-  private baseUrl = environment.baseUrl;;
+  private baseUrl = environment.baseUrl;
 
   constructor(
     private http: HttpClient

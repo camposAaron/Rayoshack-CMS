@@ -9,6 +9,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptorService } from './shared/services/error-interceptor.service';
 import { TokenInterceptorService } from './auth/services/token-interceptor.service';
 import { AuthGuard } from './auth/auth.guard';
+import { FormsModule } from '@angular/forms';
 
 import { PrincipalModule } from './principal/principal.module';
 
@@ -22,7 +23,8 @@ import { PrincipalModule } from './principal/principal.module';
     BrowserAnimationsModule,
     AuthModule,
     PrincipalModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [
     {

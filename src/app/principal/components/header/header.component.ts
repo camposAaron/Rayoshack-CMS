@@ -11,7 +11,7 @@ export class HeaderComponent{
   @Output() toggleFlat =  new EventEmitter<boolean>()
 
   public logo: string = "../../../../assets/LOGO.svg";
-  public flat: boolean = true;
+  public flat: boolean = false;
 
   constructor(private authService: AuthService) { }
    

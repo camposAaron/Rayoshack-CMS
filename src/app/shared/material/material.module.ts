@@ -8,22 +8,28 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select'; 
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
 @NgModule({
-  exports : [
-     MatCardModule,
-     MatInputModule,
-     MatButtonModule,
-     MatToolbarModule,
-     MatSidenavModule,
-     MatListModule,
-     MatIconModule,
-     MatTooltipModule,
-     MatFormFieldModule,
-     MatSelectModule
+  exports: [
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatCheckboxModule
 
   ]
 })

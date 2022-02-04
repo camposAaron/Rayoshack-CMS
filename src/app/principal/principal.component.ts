@@ -10,7 +10,9 @@ export class PrincipalComponent {
   public flat: boolean = true;
 
   toggleNavbar(flat:boolean){
+    console.log(this.flat);
     this.flat = flat;
+    console.log(this.flat);
   }
   
 }
