@@ -15,7 +15,7 @@
 
     <mat-form-field appearance="fill" class="select">
       <mat-label>Categoria</mat-label>
-      <mat-select (onChange)="changeCategory(value)">
+      <mat-select (selectionChange)="changeCategory($event.value)">
         <mat-option>todas</mat-option>
         <mat-option *ngFor="let category of categories" [value]="category._id">{{category.nombre}}</mat-option>
       </mat-select>
@@ -24,7 +24,7 @@
     
     <mat-form-field appearance="fill" class="select">
       <mat-label>Marca</mat-label>
-      <mat-select [(value)]="marcaSelectedValue">
+      <mat-select (selectionChange)="changeBranch($event.value)">
         <mat-option>todas</mat-option>
         <mat-option *ngFor="let marca of marcas" [value]="marca">{{marca}}</mat-option>
       </mat-select>
@@ -32,7 +32,7 @@
 
   </div>
 
-  <mat-checkbox color="primary" >
+  <mat-checkbox color="primary" (change)="changeStock($event.checked)" >
     <mat-label>Stock</mat-label>
   </mat-checkbox>
 

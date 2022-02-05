@@ -16,8 +16,10 @@ export class FinderComponent implements OnInit {
   public value = "";
   public categories!: Categoria[];
   public marcas: string[];
+  
   @Output() categorySelectedValue = new EventEmitter<string>();
   @Output() marcaSelectedValue = new EventEmitter<string>();
+  @Output() isInStock = new EventEmitter<boolean>();
 
   constructor(private _productService : ProductosServicesService) { 
     this.marcas = [];
@@ -28,10 +30,6 @@ export class FinderComponent implements OnInit {
     this.getBranches();
   }
 
-  filterCategory(){
-    console.log('aqui');
-  }
-  
   getCategories(){
     this._productService.getCategories().subscribe(
       categories => {
@@ -41,8 +39,15 @@ export class FinderComponent implements OnInit {
   }
 
   changeCategory(category: string){
-    console.log(category);
     this.categorySelectedValue.emit(category);
+  }
+
+  changeBranch(branch: string){
+    this.marcaSelectedValue.emit(branch);
+  }
+
+  changeStock(checked: boolean){
+    this.isInStock.emit(checked);
   }
 
   getBranches(){

@@ -21,7 +21,7 @@ export class TableComponent implements OnInit {
 
   public displayedColumns: string[] = ['portada', 'marca',
     'modelo', 'categoria.nombre', 'precio', 'stock', ' '];
-    
+
   public dataSource = new MatTableDataSource(this.productos);
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
@@ -47,11 +47,9 @@ export class TableComponent implements OnInit {
   }
 
   applyFilter() {
-
-
-
+    
     this.productos$ = this.searchTerms.pipe(
-
+      //esperar 300 milisegundos 
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((term: string) => {
@@ -61,28 +59,15 @@ export class TableComponent implements OnInit {
         } else {
           return this._finderService.findProduct(term.trim())
         }
-
       })
-    )
+    );
 
     this.productos$.subscribe({
       next: (res: any) => {
         this.productos = res;
         this.dataSource.data = this.productos;
-      },
-      error: (err) => {
-
       }
-    })
-
-
-
-    // this.dataSource.filter = toFindValue.trim().toLowerCase();
-
-    // if (this.dataSource.paginator) {
-    //   this.dataSource.paginator.firstPage();
-    // }
-
+    });
   }
 
   getProductos() {
@@ -94,6 +79,8 @@ export class TableComponent implements OnInit {
       }
     });
   }
+
+  
 }
 
 
