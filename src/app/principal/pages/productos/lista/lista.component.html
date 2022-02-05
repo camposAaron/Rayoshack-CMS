@@ -1,4 +1,13 @@
 <div id="container">
-    <finder (toFind)="changeValue($event)"></finder>
-    <product-table [toFindValue] = "toFindValue" ></product-table>
+    <finder (toFind)="changeValue($event)"
+            (categorySelectedValue)="changeCategory($event)"
+            (marcaSelectedValue)="changeBranch($event)"
+            (isInStock)="changeStock($event)"
+    ></finder>
+    <product-table [toFindValue] = "toFindValue"
+                   [toCategory] = "category"
+                   [toBranch] = "branch"
+                   [toStock] = "stock" 
+    
+    ></product-table>
 </div>

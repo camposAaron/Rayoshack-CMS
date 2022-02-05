@@ -47,6 +47,7 @@ export class FinderComponent implements OnInit {
   }
 
   changeStock(checked: boolean){
+    console.log(checked);
     this.isInStock.emit(checked);
   }
 

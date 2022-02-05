@@ -7,6 +7,7 @@ import { Categoria, Producto } from 'src/app/models';
 import { ProductosServicesService } from '../../services/productos-services.service';
 import { FinderService } from 'src/app/shared/services/finder.service';
 
+
 @Component({
   selector: 'product-table',
   templateUrl: './table.component.html',
@@ -14,7 +15,11 @@ import { FinderService } from 'src/app/shared/services/finder.service';
 })
 export class TableComponent implements OnInit {
 
+  /*Filter inputs */
   @Input() toFindValue!: string;
+  @Input() toBranch!: string;
+  @Input() toCategory!: string;
+  @Input() toStock!: boolean;
 
   public productos!: Producto[];
   public categoria!: Categoria[];
@@ -34,7 +39,9 @@ export class TableComponent implements OnInit {
   constructor(
     private _productService: ProductosServicesService,
     private _finderService: FinderService
-  ) { }
+  ) {
+
+  }
 
   ngOnInit(): void {
     this.getProductos();
@@ -42,12 +49,23 @@ export class TableComponent implements OnInit {
 
 
   ngOnChanges(changes: SimpleChanges) {
-    this.searchTerms.next(changes['toFindValue'].currentValue);
-    this.applyFilter();
+
+    if (changes['toFindValue']) {
+      this.searchTerms.next(changes['toFindValue'].currentValue);
+      this.search();
+      this.applyFilter()
+    }
+
+    if (changes['toCategory'] || changes['toBranch'] || changes['toStock']) {
+      this.applyFilter()
+    }
+
+    
+
   }
 
-  applyFilter() {
-    
+  search() {
+
     this.productos$ = this.searchTerms.pipe(
       //esperar 300 milisegundos 
       debounceTime(300),
@@ -69,7 +87,43 @@ export class TableComponent implements OnInit {
       }
     });
   }
+  
+  applyFilter() {
+    
+    console.log(this.toBranch, this.toCategory, this.toStock);
 
+    let productsFiltered: Producto[] = [];
+    
+
+    // productsFiltered = this.productos.filter(p => p.stock === this.toStock);
+    
+    if (!this.toBranch && !this.toCategory && this.toStock) {
+      console.log('here');
+      this.getProductos();
+    }
+
+    if (!this.toBranch) {
+      productsFiltered = this.productos.filter(p => p.categoria._id === this.toCategory);
+    }
+    
+    if (!this.toCategory) {
+      productsFiltered = this.productos.filter(p => p.marca === this.toBranch);
+    }
+    
+    if(this.toBranch && this.toCategory && this.toStock){
+      productsFiltered = this.productos.filter(p => p.marca === this.toBranch
+        && p.categoria._id === this.toCategory
+     ); 
+     
+    }
+      //verificar stock
+      productsFiltered = productsFiltered.filter(p => p.stock === this.toStock)
+      
+    this.dataSource.data = productsFiltered;
+  }
+  
+  
+  
   getProductos() {
     this._productService.getProducts().subscribe({
       next: (productos) => {
@@ -80,7 +134,7 @@ export class TableComponent implements OnInit {
     });
   }
 
-  
+
 }
 
 

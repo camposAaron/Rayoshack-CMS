@@ -4,16 +4,30 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './lista.component.html',
   styleUrls: ['./lista.component.scss']
 })
-export class ListaComponent implements OnInit {
+export class ListaComponent{
 
-  toFindValue: string = ""
+  toFindValue: string = "";
+  category: string = "";
+  branch: string = "";
+  stock: boolean = true;
+
+
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   changeValue(value: string){
     this.toFindValue = value;
+  }
+  
+  changeCategory(value: string){
+    this.category = value;
+  }
+  
+  changeBranch(value: string){
+    this.branch = value;
+  }
+
+  changeStock(value: boolean){
+    this.stock = value;
   }
 
 }

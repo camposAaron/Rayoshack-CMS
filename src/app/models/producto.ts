@@ -7,7 +7,7 @@ export interface Producto {
     portada: string;
     detalles: string;
     descripcion: string;
-    categoria: object;
+    categoria: Categoria;
     stock: boolean;
     promocion: object;
     comentario: Array<Comentario>,
@@ -15,6 +15,10 @@ export interface Producto {
     estado: boolean;
 }
 
+interface Categoria{
+    _id: string;
+    nombre: string;
+}
 
 export interface Comentario{
         usuario : object;
