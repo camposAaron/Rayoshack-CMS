@@ -26,10 +26,13 @@ export class ProductosServicesService {
     )
   }
 
+  getProductByid(id:string):Observable<Producto>{
+    return this.http.get<Producto>(this.baseUrl+'/producto/'+id);
+  }
+
   getCategories(): Observable<Categoria[]> {
     return this.http.get<Categoria[]>(this.baseUrl+'/categoria').pipe(
       map((res:any) => res.categorias)
     )
   }
-
 }

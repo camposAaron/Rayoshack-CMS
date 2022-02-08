@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Categoria, Producto } from 'src/app/models';
 import { ProductosServicesService } from '../../services/productos-services.service';
 import { FinderService } from 'src/app/shared/services/finder.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -34,11 +35,10 @@ export class TableComponent implements OnInit {
   productos$!: Observable<Producto[]>;
   private searchTerms = new Subject<string>();
 
-
-
   constructor(
     private _productService: ProductosServicesService,
-    private _finderService: FinderService
+    private _finderService: FinderService,
+    private _router: Router
   ) {
 
   }
@@ -46,7 +46,6 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
     this.getProductos();
   }
-
 
   ngOnChanges(changes: SimpleChanges) {
 
@@ -59,9 +58,6 @@ export class TableComponent implements OnInit {
     if (changes['toCategory'] || changes['toBranch'] || changes['toStock']) {
       this.applyFilter()
     }
-
-    
-
   }
 
   search() {
@@ -87,16 +83,16 @@ export class TableComponent implements OnInit {
       }
     });
   }
-  
+
   applyFilter() {
-    
+
     console.log(this.toBranch, this.toCategory, this.toStock);
 
     let productsFiltered: Producto[] = [];
-    
+
 
     // productsFiltered = this.productos.filter(p => p.stock === this.toStock);
-    
+
     if (!this.toBranch && !this.toCategory && this.toStock) {
       console.log('here');
       this.getProductos();
@@ -105,25 +101,23 @@ export class TableComponent implements OnInit {
     if (!this.toBranch) {
       productsFiltered = this.productos.filter(p => p.categoria._id === this.toCategory);
     }
-    
+
     if (!this.toCategory) {
       productsFiltered = this.productos.filter(p => p.marca === this.toBranch);
     }
-    
-    if(this.toBranch && this.toCategory && this.toStock){
+
+    if (this.toBranch && this.toCategory && this.toStock) {
       productsFiltered = this.productos.filter(p => p.marca === this.toBranch
         && p.categoria._id === this.toCategory
-     ); 
-     
+      );
+
     }
-      //verificar stock
-      productsFiltered = productsFiltered.filter(p => p.stock === this.toStock)
-      
+    //verificar stock
+    productsFiltered = productsFiltered.filter(p => p.stock === this.toStock)
+
     this.dataSource.data = productsFiltered;
   }
-  
-  
-  
+
   getProductos() {
     this._productService.getProducts().subscribe({
       next: (productos) => {
@@ -134,7 +128,9 @@ export class TableComponent implements OnInit {
     });
   }
 
-
+  goToDetails(productId: string){
+    this._router.navigateByUrl(`admin/productos/detalle/${productId}`);
+  }
 }
 
 

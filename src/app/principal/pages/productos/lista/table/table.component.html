@@ -42,7 +42,7 @@
     <ng-container matColumnDef=" ">
       <th mat-header-cell *matHeaderCellDef>  </th>
       <td mat-cell *matCellDef="let row"> 
-        <button mat-button class="btn-detail">Ver detalles</button>  
+        <button mat-button class="btn-detail" (click)="goToDetails(row._id)">Ver detalles</button>  
       </td>
     </ng-container>
 
