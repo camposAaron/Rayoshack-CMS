@@ -10,7 +10,7 @@ import { TableComponent } from './lista/table/table.component';
 import { ImgPipe } from './pipes/img.pipe';
 import { HabiltadoPipe } from './pipes/habiltado.pipe';
 import { FormsModule } from '@angular/forms';
-
+import { FormularioComponent } from './detalle/formulario/formulario.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { FormsModule } from '@angular/forms';
       FinderComponent,
       TableComponent,
       ImgPipe,
-      HabiltadoPipe
+      HabiltadoPipe,
+      FormularioComponent
   ],
   imports: [
     CommonModule,

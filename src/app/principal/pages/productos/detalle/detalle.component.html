@@ -1,1 +1,18 @@
-<p>detalle works!</p>
+<div id="container">
+    <div id="product-detail-container" *ngIf="producto">
+        <div id="container-header">
+            <h1>Detalles del producto</h1>
+            <span class="separator"></span>
+            <button mat-mini-fab class="btnFab" id="editFab">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab class="btnFab" id="deleteFab">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+        
+        <div id="container-body">
+            <app-formulario [producto]="producto"></app-formulario>
+        </div>
+    </div>    
+</div>

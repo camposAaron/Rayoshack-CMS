@@ -1,5 +1,8 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Producto } from 'src/app/models';
+import { ProductosServicesService } from '../services/productos-services.service';
 
 @Component({
   selector: 'app-detalle',
@@ -8,19 +11,29 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetalleComponent implements OnInit {
 
-  public id!:  string;
+  private id!: string;
+  public producto!: Producto;
 
   constructor(
-    private _rutaActiva : ActivatedRoute
+    private _rutaActiva: ActivatedRoute,
+    private location: Location,
+    private _productoService: ProductosServicesService
   ) { }
 
   ngOnInit(): void {
-   
-    this._rutaActiva.params.subscribe( params => {
+
+    this._rutaActiva.params.subscribe(params => {
       this.id = params['id']
     })
 
-    console.log(this.id);
+    this._productoService.getProductByid(this.id).subscribe({
+      next: (producto: Producto) => {
+        this.producto = producto;
+      },
+      error: (err) => {
+        this.location.back();
+      }
+    });
   }
 
 }
