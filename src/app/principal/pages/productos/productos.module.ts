@@ -11,6 +11,7 @@ import { ImgPipe } from './pipes/img.pipe';
 import { HabiltadoPipe } from './pipes/habiltado.pipe';
 import { FormsModule } from '@angular/forms';
 import { FormularioComponent } from './detalle/formulario/formulario.component';
+import { ImagenesComponent } from './detalle/imagenes/imagenes.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormularioComponent } from './detalle/formulario/formulario.component';
       TableComponent,
       ImgPipe,
       HabiltadoPipe,
-      FormularioComponent
+      FormularioComponent,
+      ImagenesComponent
   ],
   imports: [
     CommonModule,
