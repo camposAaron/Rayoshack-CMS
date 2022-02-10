@@ -12,6 +12,7 @@ export interface Producto {
     promocion: object;
     comentario: Array<Comentario>,
     calificacion: string,
+    descuento: number,
     estado: boolean;
 }
 
