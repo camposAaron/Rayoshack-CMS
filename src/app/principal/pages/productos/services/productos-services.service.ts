@@ -35,4 +35,6 @@ export class ProductosServicesService {
       map((res:any) => res.categorias)
     )
   }
+
+  
 }

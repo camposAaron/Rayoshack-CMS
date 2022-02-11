@@ -1,37 +1,36 @@
 
-    <form id="product-form" (submit)="save()" >
+    <form [formGroup]="formProduct" id="product-form" (submit)="save()" >
+        
         <mat-form-field appearance="outline">
             <mat-label>Marca</mat-label>
-            <input  matInput placeholder="Placeholder" value="{{producto.marca}}" autofocus>
+            <input  matInput placeholder="Placeholder" formControlName="marca" autofocus>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Modelo</mat-label>
-            <input matInput placeholder="Placeholder" value="{{producto.modelo}}">
+            <input matInput placeholder="Placeholder"formControlName="modelo" >
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Precio unitario</mat-label>
-            <input matInput placeholder="Placeholder" value="{{producto.precio}}">
+            <input matInput placeholder="Placeholder" formControlName="precio">
             <mat-icon matSuffix>money</mat-icon>
         </mat-form-field>
 
         <mat-form-field appearance="fill" appearance="outline">
             <mat-label>Descripcion</mat-label>
-            <textarea matInput  >
-                {{producto.descripcion}}
+            <textarea matInput  formControlName="descripcion">
             </textarea>
         </mat-form-field>
 
         <mat-form-field appearance="fill" appearance="outline">
             <mat-label>Detalles</mat-label>
-            <textarea matInput>
-                {{producto.detalles}}
+            <textarea matInput formControlName="detalles">
             </textarea>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-select>
+            <mat-select formControlName="categoria">
                 <mat-option>-- None --</mat-option>
                 <mat-option value="option">Option</mat-option>
             </mat-select>
@@ -41,7 +40,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-select>
+            <mat-select formControlName="promocion">
                 <mat-option>-- None --</mat-option>
                 <mat-option value="option">Option</mat-option>
             </mat-select>
@@ -52,11 +51,11 @@
 
         <mat-form-field appearance="outline" *ngIf="producto.descuento">
             <mat-label>Descuento</mat-label>
-            <input matInput placeholder="Placeholder" value="{{producto.descuento}}">
+            <input matInput placeholder="Placeholder" formControlName="descuento">
         </mat-form-field>
 
-        <mat-checkbox>Stock</mat-checkbox>
+        <mat-checkbox formControlName="stock">Stock</mat-checkbox>
 
-        <button mat-button type="submit" id="saveBtn">Guardar</button>
+        <button mat-button type="submit" id="saveBtn" [disabled]="formProduct.invalid">Guardar</button>
     </form>
 

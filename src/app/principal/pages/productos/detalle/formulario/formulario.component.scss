@@ -56,8 +56,9 @@ textarea{
 
 ::ng-deep{
     .mat-form-field-label {
-        font-size: 16px !important;
-        color: #222222 !important;
+        font-size: 18px !important;
+        color: #323232 !important;
+        
     }
 
     .mat-form-field-appearance-outline .mat-form-field-outline {
@@ -65,11 +66,11 @@ textarea{
     }
 
      .mat-focused .mat-form-field-outline-thick{
-        color: red !important;
+        color: #f59e0b !important;
       }
 
       .mat-input-element {
-        caret-color: red;
+        caret-color: #f59e0b !important;
       }
 
     
@@ -80,8 +81,3 @@ textarea{
     font-size: 14px !important;
     color: #222222 !important;
 }
-
-
-// ::ng-deep  .ng-star-inserted{
-//     font-size: 16px !important;
-// }

@@ -9,7 +9,7 @@ import { FinderComponent } from './lista/finder/finder.component';
 import { TableComponent } from './lista/table/table.component';
 import { ImgPipe } from './pipes/img.pipe';
 import { HabiltadoPipe } from './pipes/habiltado.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormularioComponent } from './detalle/formulario/formulario.component';
 import { ImagenesComponent } from './detalle/imagenes/imagenes.component';
 
@@ -28,7 +28,8 @@ import { ImagenesComponent } from './detalle/imagenes/imagenes.component';
     CommonModule,
     ProductosRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ProductosModule { }
