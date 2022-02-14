@@ -1,61 +1,66 @@
 <form [formGroup]="formProduct" id="product-form" (submit)="save()">
 
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="fill">
         <mat-label>Marca</mat-label>
         <input matInput placeholder="Placeholder" formControlName="marca" autofocus>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="fill">
         <mat-label>Modelo</mat-label>
         <input matInput placeholder="Placeholder" formControlName="modelo">
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="fill">
         <mat-label>Precio unitario</mat-label>
         <input matInput placeholder="Placeholder" formControlName="precio">
         <mat-icon matSuffix>money</mat-icon>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" appearance="outline">
+    <mat-form-field appearance="fill">
         <mat-label>Descripcion</mat-label>
         <textarea matInput formControlName="descripcion">
             </textarea>
     </mat-form-field>
 
-    <mat-form-field  appearance="outline">
+    <mat-form-field appearance="fill">
         <mat-label>Detalles</mat-label>
         <textarea matInput formControlName="detalles">
             </textarea>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-        <mat-select formControlName="categoria" selected="producto.categoria.nombre">
-                <mat-option *ngFor="let c of ( categorias$ | async)" [value]="c">{{c.nombre}}</mat-option>
-        </mat-select>
         <mat-label class="select-label">
             Categoria
         </mat-label>
+        <mat-select [(value)]="catSelected" [disabled]="disabled" required>
+            <mat-option *ngFor="let c of ( categorias$ | async)" [value]="c._id">{{c.nombre}}</mat-option>
+        </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-        <mat-select formControlName="promocion" > 
-            <mat-option>ninguna</mat-option>
-            <mat-option selected="true">puerco</mat-option>
-            <ng-container *ngFor="let p of ( promociones$ | async)">
-                <mat-option  [value]="p">{{p.titulo}}</mat-option>
-            </ng-container>
-        </mat-select>
         <mat-label class="select-label">
             Promocion
         </mat-label>
+        <mat-select [(value)]="promSelected" [disabled]="disabled">
+            <mat-option value="0">ninguna</mat-option>
+            <ng-container *ngFor="let p of ( promociones$ | async)">
+                <mat-option [value]="p._id">{{p.titulo}}</mat-option>
+            </ng-container>
+        </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" *ngIf="producto.descuento">
+    <mat-form-field appearance="fill">
         <mat-label>Descuento</mat-label>
         <input matInput placeholder="Placeholder" formControlName="descuento">
     </mat-form-field>
 
     <mat-checkbox formControlName="stock">Stock</mat-checkbox>
 
-    <button mat-button type="submit" id="saveBtn" [disabled]="formProduct.invalid">Guardar</button>
+    <button mat-button type="submit" 
+            id="saveBtn" 
+            [disabled]="disabled || formProduct.invalid"
+            [ngStyle]="{'display': disabled ? 'none' : 'block'}"
+            >
+            Guardar
+    </button>
 </form>

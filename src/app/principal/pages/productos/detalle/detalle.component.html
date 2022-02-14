@@ -3,16 +3,17 @@
         <div id="container-header">
             <h1>Detalles del producto</h1>
             <span class="separator"></span>
-            <button mat-mini-fab class="btnFab" id="editFab">
-                <mat-icon>edit</mat-icon>
+            <button mat-mini-fab class="btnFab" id="editFab" (click)="editar()">
+                <mat-icon matTooltip="Editar Producto">edit</mat-icon>
+             
             </button>
-            <button mat-mini-fab class="btnFab" id="deleteFab">
-                <mat-icon>delete</mat-icon>
+            <button mat-mini-fab class="btnFab" id="deleteFab" >
+                <mat-icon matTooltip="Eliminar Producto">delete</mat-icon>
             </button>
         </div>
 
         <div id="container-body">
-            <app-formulario [producto]="producto"></app-formulario>
+            <app-formulario [producto]="producto" [disabled]="edicion"></app-formulario >
             <app-imagenes></app-imagenes>
         </div>
     </div>

@@ -1,5 +1,5 @@
 import { HtmlTagDefinition } from '@angular/compiler';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Categoria, Producto, Promocion } from 'src/app/models';
@@ -14,9 +14,15 @@ import { ProductosServicesService } from '../../services/productos-services.serv
 })
 export class FormularioComponent implements OnInit {
 
+  @ViewChild('catSelect', {static: true})  catSelect!:HTMLSelectElement;
+  @ViewChild('promSelect', {static: true}) promSelect!:HTMLSelectElement;
+
+
   @Input() producto!: Producto;
-  
-  public selected: any;
+  public catSelected!: string;
+  public promSelected!: string;
+
+  @Input() disabled:boolean = true;
 
   formProduct: FormGroup = this.formBuilder.group({
     marca: ['', [Validators.required]],
@@ -24,8 +30,6 @@ export class FormularioComponent implements OnInit {
     precio: ['', [Validators.required]],
     descripcion: [''],
     detalles: [''],
-    categoria: [null],
-    promocion: [null],
     descuento: [''],
     stock: ['', [Validators.required]]
   });
@@ -41,21 +45,35 @@ export class FormularioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //inicializando los observables
+
+    this.setProductData();
+  
     this.categorias$ = this._productServive.getCategories();
     this.promociones$ = this._promoService.getPromociones();
-    //inicualizando los inputs
-    this.setProductData();
-     this.selected = this.producto.categoria;
+
+    //categoria y promocion del producto
+    this.catSelected = this.producto.categoria._id;
+    this.promSelected = this.producto.promocion._id;
+
+    this.formProduct.disable();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    
+    if(changes['disabled']){
+        (this.disabled) ? this.formProduct.disable() :  this.formProduct.enable();
+    }
   }
   
   setProductData() {
     this.formProduct.patchValue(this.producto);
-    this.formProduct.controls['categoria'].setValue(this.producto.categoria);
   }
 
   save() {
-    console.log(this.formProduct.value);
+    const producto = this.formProduct.value;
+    producto.categoria = this.catSelected;
+    producto.promocion = this.promSelected;
+    console.log(producto);
   }
 
 }

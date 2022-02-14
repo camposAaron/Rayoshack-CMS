@@ -1,3 +1,5 @@
+import { Promocion } from ".";
+
 export interface Producto {
     nombre: string;
     marca: string;
@@ -9,7 +11,7 @@ export interface Producto {
     descripcion: string;
     categoria: Categoria;
     stock: boolean;
-    promocion: object;
+    promocion: Promocion;
     comentario: Array<Comentario>,
     calificacion: string,
     descuento: number,

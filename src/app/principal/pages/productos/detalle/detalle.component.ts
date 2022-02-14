@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from 'src/app/models';
 import { ProductosServicesService } from '../services/productos-services.service';
@@ -13,6 +13,7 @@ export class DetalleComponent implements OnInit {
 
   private id!: string;
   public producto!: Producto;
+  public edicion:boolean = true;
 
   constructor(
     private _rutaActiva: ActivatedRoute,
@@ -35,5 +36,10 @@ export class DetalleComponent implements OnInit {
       }
     });
   }
-
+  
+  editar(){
+      (this.edicion) ? this.edicion = false : this.edicion = true;
+      console.log(this.edicion);
+  }
 }
+
