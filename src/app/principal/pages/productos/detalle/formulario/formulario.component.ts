@@ -1,5 +1,4 @@
-import { HtmlTagDefinition } from '@angular/compiler';
-import { Component, ElementRef, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Categoria, Producto, Promocion } from 'src/app/models';
