@@ -1,1 +1,38 @@
-<p>imagenes works!</p>
+<div class="img-container">
+    
+    <!--Portada-->
+    <mat-card class="image-card">
+        <div class="title">PORTADA</div>
+        <div class="portada-body">
+            <img *ngIf="producto" id="portada-img" 
+                  alt="El producto aun no tiene portada"
+                  src="{{producto.portada | img:producto.nombre}}">
+
+            <button mat-button class="uploadImg">agregar imagen</button>
+        </div>
+    </mat-card>
+
+    <!--Galeria-->
+    <mat-card class="image-card">
+        <div class="title galery-title">
+            <span style="font-weight: 300">Max : 4</span>
+            <span>GALERIA</span>
+        </div>
+        <div class="carrete-galeria">
+            
+            <ng-container *ngIf="producto.galeria" >
+                <div class="img-container" *ngFor="let imagen of carrete">
+                    <img  id="portada-img" 
+                          src="{{imagen | img:producto.nombre}}">
+                    <button mat-fab id="quitar" (click)="outOfCarrete(imagen)"><span>X</span></button>
+                </div>
+            
+            </ng-container>
+           
+            <button mat-button class="uploadImg uploadCarrete" *ngIf="carrete.length !== 4">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+
+</div>

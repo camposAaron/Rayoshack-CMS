@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Producto } from 'src/app/models';
 
 @Component({
   selector: 'app-imagenes',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImagenesComponent implements OnInit {
 
+  @Input() producto!: Producto;
+  public carrete!: string[];
+
   constructor() { }
 
   ngOnInit(): void {
+    this.carrete = this.producto.galeria;
+    console.log(this.producto.galeria);
+  }
+
+  outOfCarrete(img: string){
+    console.log(img);
   }
 
 }

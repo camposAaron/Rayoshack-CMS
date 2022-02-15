@@ -55,12 +55,20 @@
         #container-body{
             display: flex;
             margin-top: 15px;
+            margin-bottom: 15px;
             flex-direction: row;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
 
             app-formulario{
-                width: 50%;
+               flex-basis: 50%;
+               flex-grow: 1;
             }
+
+            app-imagenes{
+                flex-basis: 50%;
+                flex-grow: 1;
+            }
+
         }
 
     }
