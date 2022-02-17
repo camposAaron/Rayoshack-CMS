@@ -16,18 +16,27 @@
             <span>GALERIA</span>
         </div>
         <div class="carrete-galeria">
-            <ng-container *ngIf="producto.galeria">
+            <!-- <ng-container *ngIf="producto.galeria">
                 <div class="img-galery-container" *ngFor="let imagen of carrete">
                     <img id="portada-img" src="{{imagen | img:producto.nombre}}">
                     <button mat-fab id="quitar" (click)="outOfCarrete(imagen)">
                         <span>X</span>
                     </button>
                 </div>
+            </ng-container> -->
+
+            <ng-container *ngIf="producto.galeria">
+                <div class="img-galery-container" *ngFor="let imagen of previsualGalery">
+                    <img  [src]="imagen">
+                    <button mat-fab id="quitar" (click)="outOfCarrete(imagen)">
+                        <span>X</span>
+                    </button>
+                </div>
             </ng-container>
 
-            <ng-container *ngIf="carrete.length !== 4">
+            <ng-container *ngIf="previsualGalery.length !== 4">
                 <div class="uploadCarrete">
-                    <input (change)="fileCapture($event)" mat-button type="file" name="upload-photo">
+                    <input (change)="fileCapture($event)" mat-button type="file" name="upload-photo" accept="image/*">
                     <mat-icon>add</mat-icon>
                 </div>
             </ng-container>
