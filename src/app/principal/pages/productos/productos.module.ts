@@ -12,6 +12,8 @@ import { HabiltadoPipe } from './pipes/habiltado.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormularioComponent } from './detalle/formulario/formulario.component';
 import { ImagenesComponent } from './detalle/imagenes/imagenes.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [

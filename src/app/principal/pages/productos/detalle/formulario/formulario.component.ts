@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -9,7 +10,20 @@ import { ProductosServicesService } from '../../services/productos-services.serv
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
-  styleUrls: ['./formulario.component.scss']
+  styleUrls: ['./formulario.component.scss'],
+  animations : [
+    trigger('onEdit', [
+      state('open', style({
+        backgroundColor: 'red !important'
+      })),
+      state('closed', style({
+        backgroundColor : 'white'
+      })),
+      transition('open => closed',[
+        animate('2s')
+      ])
+    ])
+  ]
 })
 export class FormularioComponent implements OnInit {
 
@@ -64,6 +78,8 @@ export class FormularioComponent implements OnInit {
     }
   }
   
+
+
   setProductData() {
     this.formProduct.patchValue(this.producto);
   }
